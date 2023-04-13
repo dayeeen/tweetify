@@ -1,7 +1,7 @@
 Hallo semuanya,
 Projek ini merupakan tugas besar dari mata kuliah teori dan praktikum PBO.
 Bahasa yang digunakan dalam pengerjaan projek ini antara lain :
-[Typescript](https://www.typescriptlang.org/)
+[PHP](https://www.php.net/)
 [JavaScript](https://www.javascript.com/)
 
 **USE CASE PRIORITY**
