@@ -22,16 +22,20 @@ Framework:
 	
 | Use Case Name | Priority |
 | ------ | ------ |
-|  User registration  |    High    |
-|    User login    |    High    |
+| User registration  |    High    |
+| User login    |    High    |
 | Posting tweet	| High |
 | Delete tweet	| High |
 | Edit tweet	| High |
-| User interaction (like, retweet, share)	| Medium |
+| User interaction (like, retweet, share)	| High |
+| User interaction (Follow/get followed by another user)	| High |
+| Premium registration	| Medium |
 | Search another user	| Medium |
 | Edit user profile	| Medium |
+| Filtering content	| Medium |
 | Display username	| Low |
 | Display tweet	| Low |
+| Display followers/following	| Low |
 | Display profile (name, username, bio, etc.)	| Low |
 
 **CREDITS**
