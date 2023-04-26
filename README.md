@@ -1,6 +1,6 @@
 **Deskripsi Proyek**
 
-Projek ini adalah pengembangan aplikasi web sosial media berbasis web yang meniru fitur-fitur dari Twitter. Walau begitu, pengerjaan projek ini masih menggunakan prinsip-prinsip OOP yang menerapkan 4 pilar utama (Abstract, Inheritance, Encapsulation dan Polymorphism). Aplikasi web ini dirancang sebagai tugas besar matkul teori dan praktikum PBO. Fungsi utama dari aplikasi web ini adalah memungkinkan pengguna untuk berinteraksi dan berkomunikasi dengan orang lain dengan cara yang mirip dengan Twitter, seperti posting tweet, mengikuti pengguna lain, memberikan like, dan sebagainya.
+Projek ini adalah pengembangan aplikasi web sosial media berbasis web yang meniru fitur-fitur dari Twitter. Walau begitu, pengerjaan projek ini masih menggunakan prinsip-prinsip OOP yang menerapkan 4 pilar utama (Abstract, Inheritance, Encapsulation dan Polymorphism). Aplikasi web ini dirancang sebagai tugas besar matkul teori dan praktikum PBO. Fungsi utama dari aplikasi web ini adalah memungkinkan pengguna untuk berinteraksi dan berkomunikasi dengan orang lain dengan cara yang mirip dengan Twitter, seperti posting tweet, melihat tweet orang lain, memberikan like, dan sebagainya.
 
 **Teknologi yang Digunakan**
 
@@ -35,6 +35,7 @@ Framework:
 | Display profile (name, username, bio, etc.)	| Low |
 
 **CREDITS**
+
 [ChatGPT](https://chat.openai.com/)
 
 [Stack Overflow](https://stackoverflow.com/)
