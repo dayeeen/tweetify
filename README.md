@@ -27,8 +27,8 @@ Framework:
 | Posting tweet	| High |
 | Delete tweet	| High |
 | Edit tweet	| High |
-| User interaction (like, retweet, share)	| High |
-| Search another user	| High |
+| User interaction (like, retweet, share)	| Medium |
+| Search another user	| Medium |
 | Edit user profile	| Medium |
 | Display username	| Low |
 | Display tweet	| Low |
@@ -36,5 +36,7 @@ Framework:
 
 **CREDITS**
 [ChatGPT](https://chat.openai.com/)
+
 [Stack Overflow](https://stackoverflow.com/)
+
 [Assets Background Image](https://www.freepik.com/free-vector/colorful-icons-set-concept_12067937.htm#query=twitter%20background&position=1&from_view=keyword&track=robertav1_2_sidr)
