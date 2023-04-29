@@ -20,23 +20,23 @@ Framework:
 
 **USE CASE PRIORITY**
 	
-| Use Case Name | Priority |
-| ------ | ------ |
-| User registration  |    High    |
-| User login    |    High    |
-| Posting tweet	| High |
-| Delete tweet	| High |
-| Edit tweet	| High |
-| User interaction (like, retweet, share)	| High |
-| User interaction (Follow/get followed by another user)	| High |
-| Premium registration	| Medium |
-| Search another user	| Medium |
-| Edit user profile	| Medium |
-| Filtering content	| Medium |
-| Display username	| Low |
-| Display tweet	| Low |
-| Display followers/following	| Low |
-| Display profile (name, username, bio, etc.)	| Low |
+| Use Case Name | Priority | Status |
+| ------ | ------ | ------ |
+| User registration  |    High    |    Done     |
+| User login    |    High    |    Done     |
+| Posting tweet	| High |    Done     |
+| Delete tweet	| High |    Done     |
+| Edit tweet	| High |    Not Started     |
+| User interaction (like, retweet, share)	| High |     Not Started     |
+| User interaction (Follow/get followed by another user)	| High |    Not Started     |
+| Premium registration	| Medium |    Not Started     |
+| Search another user	| Medium |    Not Started     |
+| Edit user profile	| Medium |    Done     |
+| Filtering content	| Medium |    Not Started     |
+| Display username	| Low |    Done     |
+| Display tweet	| Low |    Done     |
+| Display followers/following	| Low |    Not Started     |
+| Display profile (name, username, bio, etc.)	| Low |    Done     |
 
 **CREDITS**
 
