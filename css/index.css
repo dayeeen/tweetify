@@ -166,6 +166,10 @@ form {
   margin-right: 10px;
 }
 
+.tweet-box-head .username {
+  margin-right: 5px;
+}
+
 .tweet-box-body {
   background-color: #fff;
   width: 100%;
@@ -212,10 +216,12 @@ textarea {
   background-color: #1a91da;
 }
 
-.tweet-list {
+.tweet-container {
   margin-top: 20px;
-  border-radius: 10px;
+  display: block;
+  margin-bottom: 20px;
   background-color: #ffffff;
+  border-radius: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
