@@ -181,7 +181,7 @@ class Twitter extends UserManager implements TweetManager
     // fungsi hapus tweet
     function delete($id)
     {
-        
+
     }
 
 
@@ -204,14 +204,10 @@ class Profile extends Database implements TweetManager
 {
     function query()
     {
-        $result = mysqli_query($this->getConn(), "SElECT * FROM users");
-        $rows = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $rows[] = $row;
-        }
-        return $rows;
+
     }
     //Fungsi Display Profile
+    //Fungsi ini dijalankan pada halaman profile.php
     function display($data)
     {
         $query = "SELECT username, first_name, last_name, email, acc_type, bio FROM users WHERE id = '$data'";
@@ -226,11 +222,53 @@ class Profile extends Database implements TweetManager
         }
         return $users;
     }
-    
-    function post($data){
 
+    //Fungsi post disini dioverride menjadi update profile
+    function post($data)
+    {
+        if (isset($_POST["update"])) {
+            $firstname = $_POST["first_name"];
+            $lastname = $_POST["last_name"];
+            $username = $_POST["username"];
+            $email = $_POST["email"];
+            $bio = $_POST["bio"];
+            $id = isset($_SESSION["id"]) ? $_SESSION["id"] : null;
+            // ketika update profile, nyimpen session user_id
+            $_SESSION["user_id"] = $id;
+            if ($id) {
+                // Update profile ke database
+                mysqli_query($this->getConn(), "UPDATE users SET first_name = '$firstname', last_name = '$lastname', username =  '$username', email = '$email', bio = '$bio' WHERE id = '$id'");
+
+                if (mysqli_affected_rows($this->getConn()) == 1) {
+                    echo "<script>
+                        alert('Profile berhasil diupdate!');
+                        window.location.href='profile.php';
+                      </script>";
+                } else {
+                    echo "<script>
+                        alert('gagal mengupdate profile: " . mysqli_error($this->getConn()) . "');
+                        window.location.href='profile.php';
+                      </script>";
+                    return false;
+                }
+            } else {
+                echo "<script>
+                    alert('Silahkan login untuk mengupdate profile!');
+                    window.location.href='profile.php';
+                  </script>";
+            }
+            // Kenapa window.location.href='profile.php'?
+            // Karena setelah update profile, user akan diarahkan ke halaman profile.php
+            // Jadi, setelah update profile, user akan melihat profile yang sudah diupdate
+            // Selain itu, penggunaan header("Location: profile.php") kurang cocok
+            // karena tidak menampilkan alert, sehingga user tidak tahu bahwa profile sudah diupdate
+        }
     }
-    function delete($id){
+
+    //Fungsi delete disini dioverride menjadi delete profile
+    //Atau bisa juga untuk delete atribut foto profil dan bio
+    function delete($id)
+    {
 
     }
 }
