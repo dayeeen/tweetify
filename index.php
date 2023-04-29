@@ -212,10 +212,15 @@ $tweets = $twt->display($_POST);
                                     </span>
                                 </div>
                                 <div class="tweet-head-right">
-                                    <i class="fa fa-edit"></i>
-                                    <i class="fa fa-trash">
-                                        <a href="delete.php?id=<?= $tweet['id'] ?>"></a>
-                                    </i>
+                                    <!-- Jika user adalah user yang sedang login, maka tampilkan opsi crud -->
+                                    <?php if ($tweet['user_id'] == $_SESSION["id"]): ?>
+                                        <form action="" method="post">
+                                            <input type="hidden" name="id" value="<?= $tweet['id'] ?>">
+                                            <button type="submit" name="delete-tweet" class="delete-btn" style="border: none; background-color: #fff;">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="tweet-list-body">
