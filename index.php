@@ -133,14 +133,14 @@ $tweets = $twt->display($_POST);
                 <div class="sidebar-item">
                     <a href="#">
                         <i class="fa fa-hashtag"></i>
-                        <span>Pasang iklan judi disini</span>
+                        <span>Data dummy lainnya</span>
                     </a>
                 </div>
                 <ul class="trending-list">
                     <!-- data dummy for trending things -->
-                    <li><a href="#">Situs 1</a></li>
-                    <li><a href="#">Situs 2</a></li>
-                    <li><a href="#">Situs 3</a></li>
+                    <li><a href="#">Data 1</a></li>
+                    <li><a href="#">Data 2</a></li>
+                    <li><a href="#">Data 3</a></li>
                 </ul>
             </div>
             <div class="sidebar-2">

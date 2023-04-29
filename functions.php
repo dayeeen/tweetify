@@ -1,5 +1,8 @@
 <?php
 require "class.php";
+
+// Class Twitter ini banyak mengatur tentang fungsi query, register, login, logout, dan cekCookie
+// Ditambah dengan adanya fungsi post, display, dan delete yang merupakan implementasi dari interface TweetManager
 class Twitter extends UserManager implements TweetManager
 {
     //fungsi query untuk menampilkan data
@@ -84,9 +87,11 @@ class Twitter extends UserManager implements TweetManager
                 if (password_verify($password, $row["password"])) {
                     // set session
                     $_SESSION["login"] = true;
-                    $_SESSION["id"] = $row["id"]; // tambahkan kode ini
+                    $_SESSION["id"] = $row["id"];
                     $_SESSION["username"] = $row["username"];
                     $_SESSION["acc_type"] = $row["acc_type"];
+                    // Maksud variable session di atas adalah untuk menyimpan data user yang sedang login
+                    // id, username, dan acc_type akan digunakan untuk menampilkan data user yang sedang login
 
                     // cek remember me
                     if (isset($_POST['remember'])) {
@@ -211,6 +216,10 @@ class Profile extends Database implements TweetManager
     {
         $query = "SELECT username, first_name, last_name, email, acc_type, bio FROM users WHERE id = '$data'";
         $result = mysqli_query($this->getConn(), $query);
+        // Query dapat darimana?
+        // Query diambil dari database, yang isinya adalah data user yang sedang login
+        // Jadi, query ini akan mengambil data user yang sedang login
+
         $users = [];
         while ($row = mysqli_fetch_assoc($result)) {
             $users[] = $row;

@@ -39,6 +39,7 @@ class Database
     }
 }
 
+// Penerapan Interface
 interface TweetManager
 {
     function query();
@@ -47,6 +48,7 @@ interface TweetManager
     function delete($data);
 }
 
+// Penerapan Abstract Class
 abstract class UserManager extends Database
 {
     abstract public function register($data);
