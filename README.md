@@ -20,9 +20,9 @@ Framework:
 
 **USE CASE PRIORITY**
 	
-| Use Case Name | Priority |
-| ------ | ------ |
-| User registration  |    High    |
+| Use Case Name | Priority | Status |
+| ------ | ------ | ------ |
+| User registration  |    High    |    Done    |
 | User login    |    High    |
 | Posting tweet	| High |
 | Delete tweet	| High |
