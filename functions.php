@@ -25,7 +25,7 @@ class Twitter extends UserManager implements TweetManager
             $email = strtolower(stripslashes($data["email"]));
             $password = mysqli_real_escape_string($this->getConn(), $data["password"]);
             $password2 = mysqli_real_escape_string($this->getConn(), $data["password2"]);
-
+            $joinDate = date("Y-m-d H:i:s");
             // cek username sudah ada atau belum
             $result = mysqli_query($this->getConn(), "SELECT username FROM users WHERE username = '$username'");
             if (mysqli_fetch_assoc($result)) {
@@ -45,8 +45,8 @@ class Twitter extends UserManager implements TweetManager
             $password = password_hash($password, PASSWORD_DEFAULT);
 
             // tambahkan user baru ke database
-            mysqli_query($this->getConn(), "INSERT INTO users (id, username, first_name, last_name, email, password) 
-            VALUES('', '$username', '$firstname', '$lastname', '$email', '$password')");
+            mysqli_query($this->getConn(), "INSERT INTO users (id, username, first_name, last_name, email, password, join_date) 
+            VALUES('', '$username', '$firstname', '$lastname', '$email', '$password', '$joinDate')");
 
             if (mysqli_affected_rows($this->getConn()) == 1) {
                 echo "<script>
@@ -141,7 +141,7 @@ class Twitter extends UserManager implements TweetManager
             $_SESSION["user_id"] = $id;
             if ($id) {
                 // tambahkan tweet baru ke database
-                mysqli_query($this->getConn(), "INSERT INTO tweets (user_id, tweet_text) VALUES('$id', '$tweet')");
+                mysqli_query($this->getConn(), "INSERT INTO tweets (user_id, tweet_text, created_at) VALUES('$id', '$tweet', NOW())");
 
                 if (mysqli_affected_rows($this->getConn()) == 1) {
                     echo "<script>
