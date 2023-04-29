@@ -181,7 +181,21 @@ class Twitter extends UserManager implements TweetManager
     // fungsi hapus tweet
     function delete($id)
     {
-
+        if(isset($_POST["delete-tweet"])) {
+            $id = $_POST["id"];
+            mysqli_query($this->getConn(), "DELETE FROM tweets WHERE id = $id");
+            if (mysqli_affected_rows($this->getConn()) == 1) {
+                echo "<script>
+                        alert('tweet berhasil dihapus!');
+                      </script>";
+            } else {
+                echo "<script>
+                        alert('gagal menghapus tweet: " . mysqli_error($this->getConn()) . "');
+                      </script>";
+                return false;
+            }
+            return mysqli_affected_rows($this->getConn());
+        }
     }
 
 
@@ -269,7 +283,7 @@ class Profile extends Database implements TweetManager
     //Atau bisa juga untuk delete atribut foto profil dan bio
     function delete($id)
     {
-
+        
     }
 }
 
