@@ -6,6 +6,9 @@ if (!isset($_SESSION["login"])) {
 }
 require 'functions.php';
 $twt = new Twitter();
+$profile = new Profile();
+$profile->display($_SESSION["id"]);
+$pro = $profile->display($_SESSION["id"]);
 $twt->post($_POST);
 $twt->delete($_POST);
 $tweets = $twt->display($_POST);
@@ -164,9 +167,15 @@ $tweets = $twt->display($_POST);
                     <div class="tweet-box-head">
                         <img src="img/dayen.png" alt="" width="30px">
                         <!-- username berdasarkan id yang login -->
-                        <span class="username">
-                            <?= $_SESSION['username']; ?>
-                        </span>
+                        <?php foreach ($pro as $u): ?>
+                            <span class="username">
+                                <?= $u['username']; ?>
+                            </span>
+                            <!-- Jika akun premium, maka akan mendapat centang -->
+                            <?php if ($u['acc_type'] == 1): ?>
+                                <i class="fa fa-check-circle"></i>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
                     <div class="tweet-box-body">
                         <form action="" method="post">
@@ -190,40 +199,42 @@ $tweets = $twt->display($_POST);
                 <div class="tweet-list">
                     <!-- ambil data dari query -->
                     <?php foreach ($tweets as $tweet): ?>
-                        <div class="tweet-list-head">
-                            <div class="tweet-head-left">
-                                <img src="img/dayen.png" alt="" width="30px">
-                                <span class="head-usn">
-                                    <?= $tweet['username']?>
-                                    <!-- Jika akun premium, maka akan mendapat centang -->
-                                    <?php if ($tweet['acc_type'] == 1): ?>
-                                        <i class="fa fa-check-circle"></i>
-                                    <?php endif; ?>
-                                </span>
+                        <div class="tweet-container">
+                            <div class="tweet-list-head">
+                                <div class="tweet-head-left">
+                                    <img src="img/dayen.png" alt="" width="30px">
+                                    <span class="head-usn">
+                                        <?= $tweet['username'] ?>
+                                        <!-- Jika akun premium, maka akan mendapat centang -->
+                                        <?php if ($tweet['acc_type'] == 1): ?>
+                                            <i class="fa fa-check-circle"></i>
+                                        <?php endif; ?>
+                                    </span>
+                                </div>
+                                <div class="tweet-head-right">
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash">
+                                        <a href="delete.php?id=<?= $tweet['id'] ?>"></a>
+                                    </i>
+                                </div>
                             </div>
-                            <div class="tweet-head-right">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash">
-                                    <a href="delete.php?id=<?= $tweet['id'] ?>"></a>
-                                </i>
-                            </div>
-                        </div>
-                        <div class="tweet-list-body">
-                            <p>
-                                <?= $tweet['tweet_text'] ?>
-                            </p>
-                        </div>
-                        <div class="tweet-list-footer">
-                            <div class="tweet-footer-left">
-                                <i class="fa fa-comment"></i>
-                                <i class="fa fa-retweet"></i>
-                                <i class="fa fa-heart"></i>
-                                <i class="fa fa-share"></i>
-                            </div>
-                            <div class="tweet-footer-right">
+                            <div class="tweet-list-body">
                                 <p>
-                                    <?= $tweet['created_at'] ?>
+                                    <?= $tweet['tweet_text'] ?>
                                 </p>
+                            </div>
+                            <div class="tweet-list-footer">
+                                <div class="tweet-footer-left">
+                                    <i class="fa fa-comment"></i>
+                                    <i class="fa fa-retweet"></i>
+                                    <i class="fa fa-heart"></i>
+                                    <i class="fa fa-share"></i>
+                                </div>
+                                <div class="tweet-footer-right">
+                                    <p>
+                                        <?= $tweet['created_at'] ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
