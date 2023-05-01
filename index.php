@@ -34,7 +34,9 @@ $tweets = $twt->display($_POST);
         <nav class="navbar navbar-custom navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="img/logo.png" alt="" width="40" height="36" class="d-inline-block align-text-top">
+                    <span class="navbar-brand-text">
+                        Tweetify
+                    </span>
                 </a>
                 <!-- Toggler -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
