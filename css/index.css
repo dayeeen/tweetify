@@ -1,4 +1,5 @@
-/* warna latar belakang pada navbar */
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+
 * {
   margin: 0;
 }
@@ -17,8 +18,10 @@ body {
   background-color: #1da1f2;
 }
 
-.logo-text {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.navbar-brand-text {
+  font-family: 'Lobster Two', cursive, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  font-size: 30px;
   font-weight: 600;
   letter-spacing: 3px;
   padding: 5px;
@@ -265,21 +268,35 @@ textarea {
   box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (max-width: 768px) {
-  .sidebar, .sidebar-2 {
-    display: none;
-  }
-}
 
-@media (min-width: 992px) {
+
+
+/* if in mobile mode, there's no sidebar */
+@media (max-width: 1280px) {
+  .navbar {
+    width: 100%;
+    margin-left: 0;
+  }
   .navbar-toggler-text {
     display: none;
   }
-}
-
-/* if in mobile mode, there's no sidebar */
-@media (max-width: 992px) {
+  .navbar img {
+    display: none;
+  }
+  .custom-nav {
+    display: flex;
+    justify-content: center;
+  }  
+  .content {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .sidebar, .sidebar-2 {
+    display: none;
+  }
+}
+@media (min-width: 992px) {
+  .navbar-toggler-text {
     display: none;
   }
 }
