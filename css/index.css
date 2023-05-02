@@ -11,6 +11,10 @@ body {
 
 .navbar {
   padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100; /* contoh: memberikan z-index agar navbar tampil di atas elemen lain */
 }
 
 /* warna latar belakang pada navbar */
@@ -143,6 +147,7 @@ form {
 }
 
 .content {
+  margin-top: 70px;
   margin-left: 250px;
   margin-right: 250px;
   padding: 20px;
@@ -277,11 +282,9 @@ textarea {
     width: 100%;
     margin-left: 0;
   }
-  .navbar-toggler-text {
-    display: none;
-  }
-  .navbar img {
-    display: none;
+  .navbar ul {
+    padding: 20px;
+    width: 100%;
   }
   .custom-nav {
     display: flex;
