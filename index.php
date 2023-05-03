@@ -26,15 +26,19 @@ $tweets = $twt->display($_POST);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="img/logo.png">
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-custom navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <span class="navbar-brand-text">
+                <a class="navbar-brand" href="index.php">
+                    <!-- onclick swalfire -->
+                    <span class="navbar-brand-text" onclick="Swal.fire('Hello!', 'Ini contoh SweetAlert', 'success')">
                         Tweetify
                     </span>
                 </a>
@@ -47,7 +51,7 @@ $tweets = $twt->display($_POST);
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
+                            <a class="nav-link active" aria-current="page" href="index.php">
                                 <i class="icon fa-solid fa-house">
                                     <span class="navbar-toggler-text">
                                         Home
@@ -167,9 +171,9 @@ $tweets = $twt->display($_POST);
                 <div class="tweet-box">
                     <!-- avatar icon -->
                     <div class="tweet-box-head">
-                        <img src="img/dayen.png" alt="" width="30px">
                         <!-- username berdasarkan id yang login -->
                         <?php foreach ($pro as $u): ?>
+                            <img src="img/white-avatar.png" alt="avatar" class="avatar">
                             <span class="username">
                                 <?= $u['username']; ?>
                             </span>
@@ -204,9 +208,10 @@ $tweets = $twt->display($_POST);
                         <div class="tweet-container">
                             <div class="tweet-list-head">
                                 <div class="tweet-head-left">
-                                    <img src="img/dayen.png" alt="" width="30px">
+                                    <img src="img/black-avatar.png" alt="" width="30px">
                                     <span class="head-usn">
-                                        <?= $tweet['username'] ?>
+                                        <?= $tweet['nickname'] ?>
+                                        <?= '@' . $tweet['username'] ?>
                                         <!-- Jika akun premium, maka akan mendapat centang -->
                                         <?php if ($tweet['acc_type'] == 1): ?>
                                             <i class="fa fa-check-circle"></i>
@@ -218,7 +223,13 @@ $tweets = $twt->display($_POST);
                                     <?php if ($tweet['user_id'] == $_SESSION["id"]): ?>
                                         <form action="" method="post">
                                             <input type="hidden" name="id" value="<?= $tweet['id'] ?>">
-                                            <button type="submit" name="delete-tweet" class="delete-btn" style="border: none; background-color: #fff;">
+                                            <button type="submit" name="edit-tweet" class="edit-btn"
+                                                style="border: none; background-color: #fff;">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <input type="hidden" name="id" value="<?= $tweet['id'] ?>">
+                                            <button type="submit" name="delete-tweet" class="delete-btn"
+                                                style="border: none; background-color: #fff;">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
@@ -235,7 +246,6 @@ $tweets = $twt->display($_POST);
                                     <i class="fa fa-comment"></i>
                                     <i class="fa fa-retweet"></i>
                                     <i class="fa fa-heart"></i>
-                                    <i class="fa fa-share"></i>
                                 </div>
                                 <div class="tweet-footer-right">
                                     <p>
