@@ -15,6 +15,7 @@ class Twitter extends UserManager implements TweetManager
         }
         return $rows;
     }
+
     //fungsi register
     function register($data)
     {
@@ -22,6 +23,7 @@ class Twitter extends UserManager implements TweetManager
             $username = strtolower(stripslashes($data["username"]));
             $firstname = ucfirst(strtolower(stripslashes($data["firstname"])));
             $lastname = ucfirst(strtolower(stripslashes($data["lastname"])));
+            $nickname = strtolower(stripslashes($data["nickname"]));
             $email = strtolower(stripslashes($data["email"]));
             $password = mysqli_real_escape_string($this->getConn(), $data["password"]);
             $password2 = mysqli_real_escape_string($this->getConn(), $data["password2"]);
@@ -45,8 +47,8 @@ class Twitter extends UserManager implements TweetManager
             $password = password_hash($password, PASSWORD_DEFAULT);
 
             // tambahkan user baru ke database
-            mysqli_query($this->getConn(), "INSERT INTO users (id, username, first_name, last_name, email, password, join_date) 
-            VALUES('', '$username', '$firstname', '$lastname', '$email', '$password', '$joinDate')");
+            mysqli_query($this->getConn(), "INSERT INTO users (id, username, nickname, first_name, last_name, email, password, join_date) 
+            VALUES('', '$username', '$nickname', '$firstname', '$lastname', '$email', '$password', '$joinDate')");
 
             if (mysqli_affected_rows($this->getConn()) == 1) {
                 echo "<script>
@@ -61,8 +63,6 @@ class Twitter extends UserManager implements TweetManager
             return mysqli_affected_rows($this->getConn());
 
         }
-
-
     }
 
     //fungsi login
@@ -107,8 +107,8 @@ class Twitter extends UserManager implements TweetManager
             //jika username dan password salah, maka akan muncul alert
             $error = true;
             echo "<script>
-                    alert('Username atau Password Salah!');
-                </script>";
+            alert('username / password salah!');
+            </script>";
         }
     }
 
@@ -162,10 +162,51 @@ class Twitter extends UserManager implements TweetManager
         }
     }
 
+    // Fungsi Edit Tweet
+    function edit($data)
+    {
+        if (isset($_POST["edit-tweet"])) {
+            $tweet = $data["tweet"];
+            $id = $data["id"];
+            mysqli_query($this->getConn(), "UPDATE tweets SET tweet_text = '$tweet' WHERE id = $id");
+            if (mysqli_affected_rows($this->getConn()) == 1) {
+                echo "<script>
+                alert('tweet berhasil diubah!');
+                </script>";
+            } else {
+                echo "<script>
+                alert('gagal mengubah tweet: " . mysqli_error($this->getConn()) . "');
+                </script>";
+                return false;
+            }
+            return mysqli_affected_rows($this->getConn());
+        }
+    }
+
+    // fungsi hapus tweet
+    function delete($id)
+    {
+        if (isset($_POST["delete-tweet"])) {
+            $id = $_POST["id"];
+            mysqli_query($this->getConn(), "DELETE FROM tweets WHERE id = $id");
+            if (mysqli_affected_rows($this->getConn()) == 1) {
+                echo "<script type='text/javascript'>
+                alert('tweet berhasil dihapus!');
+            </script>";
+            } else {
+                echo "<script>
+                    alert('gagal menghapus tweet: " . mysqli_error($this->getConn()) . "');
+                </script>";
+                return false;
+            }
+            return mysqli_affected_rows($this->getConn());
+        }
+    }
+
     // fungsi untuk menampilkan tweet
     function display($data)
     {
-        $query = "SELECT tweets.id, tweets.user_id, tweets.tweet_text, tweets.created_at, users.username, users.acc_type
+        $query = "SELECT tweets.id, tweets.user_id, tweets.tweet_text, tweets.created_at, users.username, users.nickname, users.acc_type
               FROM tweets 
               INNER JOIN users ON tweets.user_id = users.id 
               ORDER BY created_at DESC";
@@ -177,27 +218,6 @@ class Twitter extends UserManager implements TweetManager
         }
         return $tweets;
     }
-
-    // fungsi hapus tweet
-    function delete($id)
-    {
-        if(isset($_POST["delete-tweet"])) {
-            $id = $_POST["id"];
-            mysqli_query($this->getConn(), "DELETE FROM tweets WHERE id = $id");
-            if (mysqli_affected_rows($this->getConn()) == 1) {
-                echo "<script>
-                        alert('tweet berhasil dihapus!');
-                      </script>";
-            } else {
-                echo "<script>
-                        alert('gagal menghapus tweet: " . mysqli_error($this->getConn()) . "');
-                      </script>";
-                return false;
-            }
-            return mysqli_affected_rows($this->getConn());
-        }
-    }
-
 
     //fungsi logout
     function logout()
@@ -283,7 +303,7 @@ class Profile extends Database implements TweetManager
     //Atau bisa juga untuk delete atribut foto profil dan bio
     function delete($id)
     {
-        
+
     }
 }
 
