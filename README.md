@@ -4,39 +4,40 @@ Projek ini adalah pengembangan aplikasi web sosial media berbasis web yang menir
 
 **Teknologi yang Digunakan**
 
-Bahasa Pemrograman: 
+Bahasa Pemrograman:
 
 - [PHP](https://www.php.net/)
 
 - [Javascript](https://www.javascript.com/)
 
-Teknologi Web: 
+Teknologi Web:
+
 - HTML
 - CSS
 - MySQL
 
-Framework: 
+Framework:
 [Bootstrap 5](https://getbootstrap.com/)
 
 **USE CASE PRIORITY**
-	
 | Use Case Name | Priority | Status |
 | ------ | ------ | ------ |
-| User registration  |    High    |    Done     |
-| User login    |    High    |    Done     |
-| Posting tweet	| High |    Done     |
-| Delete tweet	| High |    Done     |
-| Edit tweet	| High |    Not Started     |
-| User interaction (like, retweet, share)	| High |     Not Started     |
-| User interaction (Follow/get followed by another user)	| High |    Not Started     |
-| Premium registration	| Medium |    Not Started     |
-| Search another user	| Medium |    Not Started     |
-| Edit user profile	| Medium |    Done     |
-| Filtering content	| Medium |    Not Started     |
-| Display username	| Low |    Done     |
-| Display tweet	| Low |    Done     |
-| Display followers/following	| Low |    Not Started     |
-| Display profile (name, username, bio, etc.)	| Low |    Done     |
+| User can access the apps online | High | Done |
+| User registration | High | Done |
+| User login | High | Done |
+| Posting tweet | High | Done |
+| Delete tweet | High | Done |
+| Edit tweet | High | Not Started |
+| User interaction (like, retweet, share) | High | Not Started |
+| User interaction (Follow/get followed by another user) | High | Not Started |
+| Premium registration | Medium | Not Started |
+| Search another user | Medium | Not Started |
+| Edit user profile | Medium | Done |
+| Filtering content | Medium | Not Started |
+| Display username | Low | Done |
+| Display tweet | Low | Done |
+| Display followers/following | Low | Not Started |
+| Display profile (name, username, bio, etc.) | Low | Done |
 
 **CREDITS**
 
