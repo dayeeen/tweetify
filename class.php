@@ -1,5 +1,4 @@
 <?php 
-
 class Database
 {
     //gunakan encapsulation
