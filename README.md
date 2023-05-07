@@ -24,6 +24,7 @@ Framework:
 | ------ | ------ | ------ |
 | User can access the apps online | High | Done |
 | User registration | High | Done |
+| Premium user registration | High | Not Started |
 | User login | High | Done |
 | Posting tweet | High | Done |
 | Delete tweet | High | Done |
@@ -32,9 +33,14 @@ Framework:
 | User interaction (Follow/get followed by another user) | High | Not Started |
 | Premium registration | Medium | Not Started |
 | Search another user | Medium | Not Started |
-| Edit user profile | Medium | Done |
+| Edit username | Medium | Done |
+| Edit password | Medium | Not Started |
+| Edit email | Medium | Done |
+| Edit name (first name & last name) | Medium | Done |
+| Edit bio | Medium | Not Started |
 | Filtering content | Medium | Not Started |
 | Display username | Low | Done |
+| Display verified user | Low | Done |
 | Display tweet | Low | Done |
 | Display followers/following | Low | Not Started |
 | Display profile (name, username, bio, etc.) | Low | Done |
