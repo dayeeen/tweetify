@@ -1,10 +1,24 @@
 <?php
 require "class.php";
+// Pengaplikasian variable final/const
+define('APP_NAME', 'Tweetify');
+define('APP_VERSION', '1.0.0');
+define('APP_AUTHOR', 'Dian Saputra');
+define('APP_URL', 'tweetify.epizy.com');
+define('APP_DESCRIPTION', 'Tweetify adalah aplikasi berbasis web yang dibuat untuk memenuhi tugas akhir mata kuliah Pemrograman Berorientasi Objek.');
 
 // Class Twitter ini banyak mengatur tentang fungsi query, register, login, logout, dan cekCookie
 // Ditambah dengan adanya fungsi post, display, dan delete yang merupakan implementasi dari interface TweetManager
 class Twitter extends UserManager implements TweetManager
 {
+    function getInfoApp()
+    {
+        echo "Nama Aplikasi : " . APP_NAME . "<br>";
+        echo "Versi Aplikasi : " . APP_VERSION . "<br>";
+        echo "Author : " . APP_AUTHOR . "<br>";
+        echo "URL : " . APP_URL . "<br>";
+        echo "Deskripsi : " . APP_DESCRIPTION . "<br>";
+    }
     //fungsi query untuk menampilkan data
     function query()
     {
@@ -234,7 +248,7 @@ class Twitter extends UserManager implements TweetManager
     }
 }
 
-class Profile extends Database implements TweetManager
+class Setting extends Database implements TweetManager
 {
     function query()
     {
