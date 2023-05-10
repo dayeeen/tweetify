@@ -29,8 +29,16 @@ Framework:
 | Posting tweet | High | Done |
 | Delete tweet | High | Done |
 | Edit tweet | High | Not Started |
-| User interaction (like, retweet, share) | High | Not Started |
-| User interaction (Follow/get followed by another user) | High | Not Started |
+| Comment tweet | High | Not Started |
+| Repost tweet (retweet) | High | Not Started |
+| Bookmark tweet | High | Not Started |
+| Display username | High | Done |
+| Display verified user | High | Done |
+| Display tweet | High | Done |
+| Display followers/following | High | Not Started |
+| User can like the tweet | High | Not Started |
+| User can follow another user | High | Not Started |
+| User can be followed by another user | High | Not Started |
 | Premium registration | Medium | Not Started |
 | Search another user | Medium | Not Started |
 | Edit username | Medium | Done |
@@ -39,10 +47,7 @@ Framework:
 | Edit name (first name & last name) | Medium | Done |
 | Edit bio | Medium | Not Started |
 | Filtering content | Medium | Not Started |
-| Display username | Low | Done |
-| Display verified user | Low | Done |
-| Display tweet | Low | Done |
-| Display followers/following | Low | Not Started |
+| Display App Version | Low | Done |
 | Display profile (name, username, bio, etc.) | Low | Done |
 
 **CREDITS**
