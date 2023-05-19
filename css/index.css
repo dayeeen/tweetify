@@ -3,6 +3,10 @@
 * {
   margin: 0;
 }
+/* Hide scrollbar for IE, Edge, Firefox, and others */
+::-webkit-scrollbar {
+  display: none;
+}
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -80,27 +84,26 @@ form {
 .sidebar {
   float: left;
   width: 250px;
-  height: 100%;
   margin-top: -20px;
   left: 0;
   background-color: #15202b;
   overflow-y: auto;
   border-radius: 20px;
   padding-top: 30px;
-  z-index: 999;
+  position: fixed;
 }
 
 .sidebar-2 {
   float: right;
   width: 250px;
-  height: 100%;
   margin-top: -20px;
-  left: 0;
+  right: 0;
   background-color: #15202b;
   overflow-y: auto;
   border-radius: 20px;
   padding-top: 30px;
-  z-index: 999;
+  position: fixed;
+
 }
 
 .sidebar a,
@@ -179,6 +182,7 @@ form {
 }
 
 .tweet-box-body {
+  overflow: hidden;
   background-color: #fff;
   width: 100%;
   border-radius: 10px;
@@ -253,6 +257,14 @@ textarea {
 
 .tweet-head-right {
   margin-left: auto;
+}
+
+.btn-secondary {
+  padding: 5px 10px;
+}
+
+.fa-ellipsis-h {
+  color: black;
 }
 
 .tweet-list-body {
