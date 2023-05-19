@@ -2,7 +2,7 @@
 session_start();
 require 'functions.php';
 //inisiasi objek
-$twt = new Twitter();
+$twt = new Tweetify();
 //cek cookie
 $twt->cekCookie();
 //panggil fungsi register
