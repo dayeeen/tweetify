@@ -50,6 +50,9 @@ interface TweetManager
 // Penerapan Abstract Class
 abstract class UserManager extends Database
 {
+    public string $username;
+    public string $password;
+    public string $email;
     abstract public function register($data);
     abstract public function cekCookie();
     abstract public function login();
