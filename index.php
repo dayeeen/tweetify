@@ -5,10 +5,10 @@ if (!isset($_SESSION["login"])) {
     exit;
 }
 require 'functions.php';
-$twt = new Twitter();
-$profile = new Profile();
-$profile->display($_SESSION["id"]);
-$pro = $profile->display($_SESSION["id"]);
+$twt = new Tweetify();
+$profile = new Setting();
+$profile->displayProfile($_SESSION["id"]);
+$pro = $profile->displayProfile($_SESSION["id"]);
 $twt->post($_POST);
 $twt->delete($_POST);
 $tweets = $twt->display($_POST);
@@ -21,14 +21,18 @@ $tweets = $twt->display($_POST);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/jquery-3.6.3.min.js"></script>
-    <script src="js/script.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- CSS 2 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="img/logo.png">
 </head>
 
@@ -87,7 +91,7 @@ $tweets = $twt->display($_POST);
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="" id="">
+                            <a class="nav-link active" aria-current="page" href="setting.php" id="">
                                 <i class="icon fa-solid fa-gear">
                                     <span class="navbar-toggler-text">
                                         Setting
@@ -131,14 +135,13 @@ $tweets = $twt->display($_POST);
                         <i class="fa fa-hashtag"></i>
                         <span>What's Trending?</span>
                     </a>
+                    <ul class="trending-list">
+                        <!-- data dummy for trending things -->
+                        <li><a href="#">Trending Topic 1</a></li>
+                        <li><a href="#">Trending Topic 2</a></li>
+                        <li><a href="#">Trending Topic 3</a></li>
+                    </ul>
                 </div>
-                <ul class="trending-list">
-                    <!-- data dummy for trending things -->
-                    <li><a href="#">Trending Topic 1</a></li>
-                    <li><a href="#">Trending Topic 2</a></li>
-                    <li><a href="#">Trending Topic 3</a></li>
-                </ul>
-                <br>
                 <div class="sidebar-item">
                     <a href="#">
                         <i class="fa fa-hashtag"></i>
@@ -153,17 +156,29 @@ $tweets = $twt->display($_POST);
                 </ul>
             </div>
             <div class="sidebar-2">
-                <div class="sidebar-item-2">
+                <div class="sidebar-item">
                     <a href="#">
-                        <i class="fa fa-user"></i>
-                        <span>Who's Online?</span>
+                        <i class="fa fa-hashtag"></i>
+                        <span>Who to follow?</span>
+                    </a>
+                    <ul class="trending-list">
+                        <!-- data dummy for trending things -->
+                        <li><a href="#">User 1</a></li>
+                        <li><a href="#">User 2</a></li>
+                        <li><a href="#">User 3</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa fa-hashtag"></i>
+                        <span>Data dummy lainnya</span>
                     </a>
                 </div>
-                <ul>
-                    <!-- data dummy for online users -->
-                    <li><a href="#">Online User 1</a></li>
-                    <li><a href="#">Online User 2</a></li>
-                    <li><a href="#">Online User 3</a></li>
+                <ul class="trending-list">
+                    <!-- data dummy for trending things -->
+                    <li><a href="#">Data 1</a></li>
+                    <li><a href="#">Data 2</a></li>
+                    <li><a href="#">Data 3</a></li>
                 </ul>
             </div>
             <!-- bagian utama -->
@@ -211,7 +226,6 @@ $tweets = $twt->display($_POST);
                                     <img src="img/black-avatar.png" alt="" width="30px">
                                     <span class="head-usn">
                                         <?= $tweet['nickname'] ?>
-                                        <?= '@' . $tweet['username'] ?>
                                         <!-- Jika akun premium, maka akan mendapat centang -->
                                         <?php if ($tweet['acc_type'] == 1): ?>
                                             <i class="fa fa-check-circle"></i>
@@ -221,18 +235,36 @@ $tweets = $twt->display($_POST);
                                 <div class="tweet-head-right">
                                     <!-- Jika user adalah user yang sedang login, maka tampilkan opsi crud -->
                                     <?php if ($tweet['user_id'] == $_SESSION["id"]): ?>
-                                        <form action="" method="post">
-                                            <input type="hidden" name="id" value="<?= $tweet['id'] ?>">
-                                            <button type="submit" name="edit-tweet" class="edit-btn"
-                                                style="border: none; background-color: #fff;">
-                                                <i class="fa fa-edit"></i>
+                                        <!-- Buat dropdown untuk menampilkan edit dan delete -->
+                                        <div class="btn-group dropstart">
+                                            <button class="btn btn-secondary bg-transparent border-0" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-ellipsis-h"></i>
                                             </button>
-                                            <input type="hidden" name="id" value="<?= $tweet['id'] ?>">
-                                            <button type="submit" name="delete-tweet" class="delete-btn"
-                                                style="border: none; background-color: #fff;">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
+                                            <ul class="dropdown-menu dropdown-menu-dark">
+                                                <li>
+                                                    <form action="" method="post">
+                                                        <input type="hidden" name="id" value="<?= $tweet['id'] ?>">
+                                                        <button type="submit" name="edit-tweet"
+                                                            class="dropdown-item">Edit</button>
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <form action="" method="post">
+                                                        <input type="hidden" name="id" value="<?= $tweet['id'] ?>">
+                                                        <button type="submit" name="delete-tweet"
+                                                            class="dropdown-item">Delete</button>
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <form action="" method="post">
+                                                        <input type="hidden" name="id" value="<?= $tweet['id'] ?>">
+                                                        <button type="submit" name="report-tweet"
+                                                            class="dropdown-item">Report</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
                             </div>
