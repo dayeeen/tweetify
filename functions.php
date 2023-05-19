@@ -9,7 +9,7 @@ define('APP_DESCRIPTION', 'Tweetify adalah aplikasi berbasis web yang dibuat unt
 
 // Class Twitter ini banyak mengatur tentang fungsi query, register, login, logout, dan cekCookie
 // Ditambah dengan adanya fungsi post, display, dan delete yang merupakan implementasi dari interface TweetManager
-class Twitter extends UserManager implements TweetManager
+class Tweetify extends UserManager implements TweetManager
 {
     function getInfoApp()
     {
@@ -248,15 +248,11 @@ class Twitter extends UserManager implements TweetManager
     }
 }
 
-class Setting extends Database implements TweetManager
+class Setting extends Database
 {
-    function query()
-    {
-
-    }
     //Fungsi Display Profile
     //Fungsi ini dijalankan pada halaman profile.php
-    function display($data)
+    function displayProfile($data)
     {
         $query = "SELECT username, first_name, last_name, email, acc_type, bio FROM users WHERE id = '$data'";
         $result = mysqli_query($this->getConn(), $query);
@@ -272,7 +268,7 @@ class Setting extends Database implements TweetManager
     }
 
     //Fungsi post disini dioverride menjadi update profile
-    function post($data)
+    function editProfile()
     {
         if (isset($_POST["update"])) {
             $firstname = $_POST["first_name"];
@@ -311,13 +307,6 @@ class Setting extends Database implements TweetManager
             // Selain itu, penggunaan header("Location: profile.php") kurang cocok
             // karena tidak menampilkan alert, sehingga user tidak tahu bahwa profile sudah diupdate
         }
-    }
-
-    //Fungsi delete disini dioverride menjadi delete profile
-    //Atau bisa juga untuk delete atribut foto profil dan bio
-    function delete($id)
-    {
-
     }
 }
 
