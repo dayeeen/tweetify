@@ -74,7 +74,7 @@ document.getElementById("logout-link").addEventListener("click", function (event
   event.preventDefault(); // menghentikan tindakan logout dilakukan langsung oleh browser
   if (confirm("Anda yakin ingin logout?")) {
     // menampilkan peringatan dan konfirmasi tindakan logout
-    window.location.href = "logout.php"; // jika dikonfirmasi, maka arahkan ke halaman logout
+    window.location.href = "logout"; // jika dikonfirmasi, maka arahkan ke halaman logout
   }
 });
 
@@ -83,4 +83,3 @@ function changeColor(button) {
 }
 
 // AJAX untuk tombol like
-
