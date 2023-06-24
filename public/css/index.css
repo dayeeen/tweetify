@@ -1,12 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap");
-
+@media (prefers-reduced-motion: reduce) {
+  .collapsing {
+      transition-property: height, visibility;
+      transition-duration: .35s;
+  }
+}
 * {
   margin: 0;
 }
-/* Hide scrollbar for IE, Edge, Firefox, and others */
+/* Hide scrollbar for IE, Edge, Firefox, and others
 ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -62,11 +67,28 @@ body {
   width: 100%;
 }
 
+.nav-item {
+  margin-bottom: 5px;
+}
+
 .navbar-toggler-text {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
   letter-spacing: 3px;
   padding: 5px;
+}
+
+/* tombol search */
+.btn-outline-success {
+  background-color: #fff;
+  color: #1da1f2;
+  border-color: #fff;
+}
+
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #1a91da;
+  border-color: #fff;
 }
 
 /* form search */
