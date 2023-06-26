@@ -1,16 +1,5 @@
 <?php
-session_start();
-require '../app/lib/functions.php';
-//inisiasi objek
-$twt = new Tweetify();
-//cek cookie
-$twt->cekCookie();
-//panggil fungsi register
-$twt->register($_POST);
-//jika tombol register ditekan
 
-//panggil fungsi login
-$twt->login();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +13,9 @@ $twt->login();
     <link rel="stylesheet" href="sweetalert2.min.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        
+    </style>
 
 </head>
 
@@ -44,7 +36,14 @@ $twt->login();
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="signup">
                                 <h2 class="text-uppercase text-center"> Sign Up for Free</h2>
-                                <form id="signup" method="post">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <?php
+                                        Flasher::flashB3();
+                                        ?>
+                                    </div>
+                                </div>
+                                <form action="<?= BASEURL; ?>/login/register" id="signup" method="post">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="form-group">
@@ -109,7 +108,7 @@ $twt->login();
                                         </div>
                                     </div>
                                     <div class="mrgn-30-top">
-                                        <button type="submit" name="register" class="btn btn-larger btn-block" />
+                                        <button type="submit" class="btn btn-larger btn-block" />
                                         Sign up
                                         </button>
                                     </div>
@@ -117,7 +116,7 @@ $twt->login();
                             </div>
                             <div class="tab-pane fade in" id="login">
                                 <h2 class="text-uppercase text-center"> Log in</h2>
-                                <form id="login" method="post">
+                                <form form action="<?= BASEURL; ?>/login/login" id="login" method="post">
                                     <div class="form-group">
                                         <label for="username"> Username<span class="req">*</span> </label>
                                         <input type="text" name="username" class="form-control" id="username" required
